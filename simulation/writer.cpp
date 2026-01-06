@@ -100,12 +100,12 @@ Writer::Writer(const Settings &settings, const GrayScott &sim, adios2::IO io, bo
         std::cout << "use derived variables" << std::endl;
         auto PDFU = io.DefineDerivedVariable("derive/hashU",
                                              "x = U \n"
-                                             "hash(x)",
+                                             "add(x)",
                                              adios2::DerivedVarType::StoreData);
 
         auto PDFV = io.DefineDerivedVariable("derive/hashV",
                                              "x = V \n"
-                                             "hash(x)",
+                                             "add(x)",
                                              adios2::DerivedVarType::StoreData);
 
     }
@@ -207,3 +207,4 @@ void Writer::write(int step, const GrayScott &sim, int rank)
 }
 
 void Writer::close() { writer.Close(); }
+
